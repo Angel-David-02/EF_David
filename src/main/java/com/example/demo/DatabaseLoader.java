@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
-	private final InstrumentoRepository repositoryI;
-	private final MusicoRepository repositoryM;
+	private final ProductoRepository repositoryI;
+	private final VentaRepository repositoryM;
 	private final BandaRepository repositoryB;
 	private final IntegranteRepository repositoryN;
 
 	@Autowired
 	public DatabaseLoader(
-		InstrumentoRepository repositoryI,
-		MusicoRepository repositoryM,
+		ProductoRepository repositoryI,
+		VentaRepository repositoryM,
 		BandaRepository repositoryB,
 		IntegranteRepository repositoryN
 		) {
@@ -28,22 +28,19 @@ public class DatabaseLoader implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 
-		this.repositoryI.save(new Instrumento("Leche", "4.00", "."));
-		this.repositoryI.save(new Instrumento("Arroz","4.50","."));
-		this.repositoryI.save(new Instrumento("Melódica","Viento","."));
-		Instrumento iVoz = new Instrumento("poets","3",".");
+		this.repositoryI.save(new Producto("Leche", "4.00", "."));
+		this.repositoryI.save(new Producto("Arroz","4.50","."));
+		Producto iVoz = new Producto("poets","3",".");
 		this.repositoryI.save(iVoz);
-		Instrumento iGuitarraElectrica = new Instrumento("azucar","4.00", ".");
+		Producto iGuitarraElectrica = new Producto("azucar","4.00", ".");
 		this.repositoryI.save(iGuitarraElectrica);
-		this.repositoryI.save(new Instrumento("Batería","Percusión","."));
-
-		this.repositoryM.save(new Musico("10"));
-		Musico mFreddy = new Musico("20");
+		this.repositoryM.save(new Venta("10"));
+		Venta mFreddy = new Venta("20");
 		this.repositoryM.save(mFreddy);
-		Musico mBrian = new Musico("15");
+		Venta mBrian = new Venta("15");
 		this.repositoryM.save(mBrian);
 
-		Banda bQueen = new Banda("1");
+		Detalle bQueen = new Detalle("1");
 		this.repositoryB.save(bQueen);
 
 		this.repositoryN.save(new Integrante(bQueen, mFreddy, iVoz));

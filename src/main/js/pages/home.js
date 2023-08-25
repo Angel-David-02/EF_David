@@ -5,7 +5,7 @@ const {Link} = require('react-router-dom');
 class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { instrumentos: [], musicos: [], bandas: [] };
+		this.state = { Producto: [], Venta: [], Detalle: [] };
 	}
 	componentDidMount() {
 
